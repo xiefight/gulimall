@@ -1,4 +1,4 @@
-package com.xt.gulimall.gulimallproduct;
+package com.xt.gulimallproduct;
 
 import org.junit.Test;
 import org.springframework.boot.test.context.SpringBootTest;
