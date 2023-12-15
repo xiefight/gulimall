@@ -1,0 +1,26 @@
+spring:
+  application:
+    name: gulimall-coupon
+
+  cloud:
+    nacos:
+      config:
+        server-addr: 39.96.179.255:8848
+        file-extension: yml
+        namespace: 13774fd5-f962-4a78-84c8-ad51e668ec5f
+        #启动时还会加载gulimall-coupon.yml，如果是默认分组，则不需要指定，如果不是默认分组，比如是dev组，则需要在这里声明
+        #group: dev  这里的dev组只作用于gulimall-coupon.yml这个默认配置
+        #加载多个yml配置
+        ext-config:
+          - data-id: datasource.yml
+            group: dev
+            refresh: true
+          - data-id: mybatis.yml
+            group: dev
+            refresh: true
+          - data-id: basic.yml
+            group: dev
+            refresh: true
+#          - data-id: gulimall-coupon.yml
+#            group: dev
+#            refresh: true

@@ -1,10 +1,13 @@
 package com.xt.gulimall.coupon.controller;
 
 import java.util.Arrays;
+import java.util.HashMap;
 import java.util.Map;
 
 //import org.apache.shiro.authz.annotation.RequiresPermissions;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.cloud.context.config.annotation.RefreshScope;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -25,9 +28,25 @@ import com.xt.common.utils.R;
  * @email ***
  * @date 2023-12-12 14:33:25
  */
+@RefreshScope
 @RestController
 @RequestMapping("coupon/coupon")
 public class CouponController {
+
+    @Value("${coupon.user.name}")
+    private String name;
+    @Value("${coupon.user.age}")
+    private Integer age;
+
+    @RequestMapping("nacosConfig")
+    public R nacosConfig(){
+        Map<String,Object> map = new HashMap<>();
+        map.put("name",name);
+        map.put("age",age);
+        return R.ok().put("data",map);
+    }
+
+
     @Autowired
     private CouponService couponService;
 
